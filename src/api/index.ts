@@ -1,10 +1,11 @@
 
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
+import { Recipe } from '../models/recipe';
 
 const baseURL = 'https://www.themealdb.com/api/json/v1/1'
 
-export const getFiveRandomMeals = async () => {
-    const recipes = await Promise.all([
+export const getFiveRandomMeals = async (): Promise<Recipe[]> => {
+    const data = await Promise.all([
         axios.get(`${baseURL}/random.php`),
         axios.get(`${baseURL}/random.php`),
         axios.get(`${baseURL}/random.php`),
@@ -12,7 +13,9 @@ export const getFiveRandomMeals = async () => {
         axios.get(`${baseURL}/random.php`)
     ])
 
-    return recipes
+    const recipes = data.map(d => d.data.meals[0])
+
+    return recipes as Recipe[]
 }
 export const searchMeal = async (searchInput: string) => {
     return await axios.get(`${baseURL}/search.php?s=${searchInput}`)
