@@ -9,6 +9,7 @@ const s = {
         width: 50px;
         height: 50px;
         position: sticky;
+        position: -webkit-sticky;
         bottom: 10px;
         margin-left: 50%;
         margin-bottom: 10px;
