@@ -22,4 +22,5 @@ This project took me 4hr + 30min of planning.
 - Include pagination, specially usefull for search results. 
 - Add unit tests
 - Add error handling and 404 page.
+- Filter recipes by tags would be a nice functionality.
 
