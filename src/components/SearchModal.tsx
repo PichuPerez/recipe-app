@@ -35,7 +35,7 @@ interface SearchModalProps {
 }
 const SearchModal = ({ onClose, onSearch }: SearchModalProps) => {
     const [searchString, setSearchString] = useState<string>('')
-    console.log(searchString)
+
     return (
         <s.Container>
             <s.ModalContent>

@@ -2,6 +2,8 @@ import React from 'react'
 import { Recipe } from '../models/recipe'
 import styled from 'styled-components'
 import { media } from '../utils/media-queries'
+import { useNavigate } from 'react-router-dom'
+
 
 interface RecipeCardProps {
     recipe: Recipe
@@ -21,6 +23,9 @@ const s = {
         flex-direction: column;
         ${media.m}{
             width: 98%;
+        }
+        &:hover{
+            cursor: pointer;
         }
     `,
     Image: styled.div<ImageProps>`
@@ -42,8 +47,10 @@ const s = {
     `
 }
 const RecipeCard = ({ recipe }: RecipeCardProps) => {
+    const navigate = useNavigate();
+
     return (
-        <s.CardContainer>
+        <s.CardContainer onClick={() => navigate(`/${recipe.idMeal}`)}>
             <s.Image imageUrl={recipe.strMealThumb} />
             <s.Title>{recipe.strMeal}</s.Title>
             <s.Text>{recipe.strArea}</s.Text>
